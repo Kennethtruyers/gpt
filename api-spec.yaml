@@ -1,0 +1,38 @@
+openapi: 3.0.0
+info:
+  title: Supabase Memory API
+  version: 1.0.0
+servers:
+  - url: https://rgbytpcrbcrhdyxzleqy.supabase.co/rest/v1/
+paths:
+  /memory:
+    get:
+      summary: Get memory by key
+      parameters:
+        - name: key
+          in: query
+          required: true
+          schema:
+            type: string
+            example: eq.reporting_deadline
+      responses:
+        '200':
+          description: Memory retrieved
+    post:
+      summary: Store a new memory item
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                key:
+                  type: string
+                value:
+                  type: string
+      responses:
+        '200':
+          description: Memory stored
